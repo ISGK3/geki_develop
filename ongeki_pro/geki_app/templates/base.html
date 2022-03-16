@@ -1,0 +1,39 @@
+{% load static %}
+{% load django_bootstrap5 %}
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>ONGEKI-攻略サイト</title>
+        {% bootstrap_css %}
+        {% bootstrap_javascript %}
+        <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery.tablesorter/2.31.0/js/jquery.tablesorter.min.js"></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery.tablesorter/2.31.0/css/theme.default.min.css">
+        <script>
+        $(document).ready(function() {
+            $('#fav-table').tablesorter();
+        });
+        </script>
+    </head>
+    <body>
+        <nav class="navvar navbar-expand flex-md-row navbar-dark bg-dark">
+            <div class="container justify-content-between">
+                <a href="/" class="navbar-brand">ONGEKI-攻略</a>
+                <ul class="navbar-nav mr-md-2">
+                    <li class=""><a class="nav-link" href="{% url 'music_list' %}">オンゲキ楽曲一覧</a></li>
+                    {% if user.is_authenticated %}
+                    <li class="nav-item"><a class="nav-link" href="{% url 'logout' %}">ログアウト</a></li>
+                    {% else %}
+                    <li class="nav-item"><a class="nav-link" href="{% url 'login' %}">ログイン</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{% url 'signup' %}">会員登録</a></li>
+                    {% endif %}
+                </ul>
+            </div>
+        </nav>
+        <main>
+            <div class="container">
+                {% block main %}{% endblock %}
+            </div>
+        </main>
+    </body>
+</html>

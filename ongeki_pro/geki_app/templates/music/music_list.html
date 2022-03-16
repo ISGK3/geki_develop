@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% load django_bootstrap5 %}
+
+{% block main %}
+<table id="fav-table" class="table table-bordered">
+    <thead>
+        <tr>
+            <th style="" >画像</th>
+            <th style="" >ジャンル</th>
+            <th style="" >曲名</th>
+            <th style="" >難易度</th>
+            <th style="" >Lv</th>
+            <th style="" >Notes</th>
+            <th style="" >BELL</th>
+            <th style="text-align:CENTER;">譜面定数</th>
+            <th style="" >BPM</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for music in music_list %}
+        <tr>
+            <td><img src=""></a></td>
+            <td>{{ music.genre }}</td>
+            <td>{{ music.title }}</a></td>
+            <td>{{ music.difficulty }}</a></td>
+            <td>{{ music.lv }}</td>
+            <td>{{ music.notes }}</td>
+            <td>{{ music.bell }}</td>
+            <td style="text-align:CENTER;" data-col="6">{{ music.const }}</td>
+            <td>{{ music.bpm }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}
