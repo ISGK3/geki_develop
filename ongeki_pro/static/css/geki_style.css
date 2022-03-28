@@ -1,0 +1,21 @@
+.table td{
+    vertical-align: middle;
+    text-align: right;
+}
+
+.table th{
+    text-align: center;
+}
+
+td{
+    border: 1px solid #aaa;
+    border-collapse: collapse;
+}
+
+#table_detail tbody{
+    border-color: black;
+    border-width: 1px;
+}
+#table_detail th, td{
+    text-align:center;
+}

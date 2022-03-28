@@ -29,7 +29,7 @@ class MusicInfo(sysModelBase):
         verbose_name = "楽曲情報"
         verbose_name_plural = verbose_name
         
-    poseter_url = models.TextField(verbose_name='画像URL', blank=True, null=True)
+    poster = models.ImageField(verbose_name='画像URL', upload_to='img', blank=True, null=True)
     genre = models.CharField(verbose_name='ジャンル', max_length=128)
     title = models.CharField(verbose_name='タイトル', max_length=128)
     lv = models.CharField(verbose_name='レベル', max_length=128)
@@ -39,4 +39,18 @@ class MusicInfo(sysModelBase):
     bpm = models.IntegerField(verbose_name='BPM', blank=True, null=True)
     difficulty = models.CharField(verbose_name='難易度', max_length=128)
     
-    
+
+class MusicDetail(sysModelBase):
+    """
+    楽曲詳細情報
+    """
+    class Meta:
+        verbose_name = "楽曲詳細情報"
+        verbose_name_plural = verbose_name
+        
+    poster = models.ImageField(verbose_name='画像URL', upload_to='img', blank=True, null=True)
+    genre = models.CharField(verbose_name='ジャンル', max_length=128)
+    title = models.CharField(verbose_name='タイトル', max_length=128)
+    artist = models.CharField(verbose_name='アーティスト', max_length=128, blank=True, null=True)
+    opponent = models.CharField(verbose_name='対戦相手', max_length=128, blank=True, null=True)
+    unlocked = models.CharField(verbose_name='解禁方法', max_length=128, blank=True, null=True)

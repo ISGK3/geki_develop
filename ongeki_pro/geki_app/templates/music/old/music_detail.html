@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% load static %}
+{% load django_bootstrap5 %}
+
+{% block main %}
+<table width="" id="">
+    <tbody>
+        <tr><td rowspan="5" class="" style="text-align:center;"><a href="" rel="colorbox"><img src="{% static img %}" class="lazy"></a></td></tr>
+        <tr><th class="" style="">ジャンル</th><td class="" style="text-align:center;background:#ffb6c1 !important;">オンゲキ</td></tr>
+        <tr><th class="" style="">タイトル</th><td class="" style="text-align:center;">Apollo</td></tr>
+        <tr><th class="" style="">アーティスト</th><td class="   " style="text-align:center;">TJ.hangneil</td></tr>
+        <tr><th class="" style="">対戦相手</th><td class="   " style="text-align:center;">皇城セツナ（LEAF） Lv.80</td></tr>
+        <tr><th class="" style="">解禁方法</th><td class="   " style="text-align:center;">チャプター:第4章チャプター6</td></tr>
+    </tbody>
+</table>
+<hr>
+<br>
+<hr>
+<table width="300" id="fav-table" class="table table-bordered">
+    <thead>
+        <tr>
+            <th width="80">難易度</th>
+            <th width="50">Lv</th>
+            <th style="text-align:CENTER; width:80px">譜面定数</th>
+            <th width="50">Notes</th>
+            <th width="40">BELL</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for music in musics %}
+        <tr>
+            <td style="text-align: CENTER;">{{ music.difficulty }}</a></td>
+            <td>{{ music.lv }}</td>
+            <td style="text-align:CENTER;">{{ music.const }}</td>
+            <td>{{ music.notes }}</td>
+            <td>{{ music.bell }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

@@ -6,9 +6,13 @@
         <title>ONGEKI-攻略サイト</title>
         {% bootstrap_css %}
         {% bootstrap_javascript %}
+        <meta property="twitter:card" content={{ head_meta.card }}>
+        <meta property="twitter:title" content={{ head_meta.title }}>
+        <meta name="twitter:image" content={% static head_meta.image %}>
         <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
         <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery.tablesorter/2.31.0/js/jquery.tablesorter.min.js"></script>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery.tablesorter/2.31.0/css/theme.default.min.css">
+        <link rel="stylesheet" href="{% static 'css/geki_style.css' %}">
         <script>
         $(document).ready(function() {
             $('#fav-table').tablesorter();
@@ -32,6 +36,11 @@
         </nav>
         <main>
             <div class="container">
+                <br>
+                <hr>
+                <img src="{% static 'img/ogimage.jpg' %}" style="display: inline;">
+                <br>
+                <hr>
                 {% block main %}{% endblock %}
             </div>
         </main>

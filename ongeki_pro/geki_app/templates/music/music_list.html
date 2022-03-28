@@ -1,32 +1,33 @@
 {% extends "base.html" %}
+{% load static %}
 {% load django_bootstrap5 %}
 
 {% block main %}
 <table id="fav-table" class="table table-bordered">
     <thead>
         <tr>
-            <th style="" >画像</th>
-            <th style="" >ジャンル</th>
-            <th style="" >曲名</th>
-            <th style="" >難易度</th>
-            <th style="" >Lv</th>
-            <th style="" >Notes</th>
-            <th style="" >BELL</th>
-            <th style="text-align:CENTER;">譜面定数</th>
-            <th style="" >BPM</th>
+            <th width="30">画像</th>
+            <th width="50">ジャンル</th>
+            <th width="200">曲名</th>
+            <th width="60">難易度</th>
+            <th width="50">Lv</th>
+            <th style="text-align:CENTER; width:60px">譜面定数</th>
+            <th width="60">Notes</th>
+            <th width="60">BELL</th>
+            <th width="60">BPM</th>
         </tr>
     </thead>
     <tbody>
         {% for music in music_list %}
         <tr>
-            <td><img src=""></a></td>
-            <td>{{ music.genre }}</td>
-            <td>{{ music.title }}</a></td>
-            <td>{{ music.difficulty }}</a></td>
+            <td style="text-align: CENTER;"><a href="{% url 'music_detail' music.title %}"><img src="{% static music.poster.url %}" style="width: 50px;"></a></td>
+            <td style="text-align: CENTER;">{{ music.genre }}</td>
+            <td style="text-align: left;"><a href="{% url 'music_detail' music.title %}">{{ music.title }}</a></td>
+            <td style="text-align: CENTER;">{{ music.difficulty }}</a></td>
             <td>{{ music.lv }}</td>
+            <td style="text-align:CENTER;" data-col="6">{{ music.const }}</td>
             <td>{{ music.notes }}</td>
             <td>{{ music.bell }}</td>
-            <td style="text-align:CENTER;" data-col="6">{{ music.const }}</td>
             <td>{{ music.bpm }}</td>
         </tr>
         {% endfor %}
