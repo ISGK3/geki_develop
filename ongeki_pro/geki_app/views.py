@@ -22,14 +22,16 @@ class musicListView(View):
         self.head_meta = {
             'title': 'オンゲキ楽曲一覧',
             'card': 'summary_large_image',
-            'image': ''
+            'image': '',
+            'mode': 'image',
+            'movie_url': '',
         }
     
     def get(self, request):      
         
         music_list = models.MusicInfo.objects.all()
         context = {'music_list': music_list,
-                   'head_meta': self.head_meta
+                   'head_meta': self.head_meta,
                    }
         
         return render(request, template_name=self.template_name, context=context)
@@ -45,7 +47,9 @@ class musicDetail(View):
         self.head_meta = {
             'title': 'オンゲキ楽曲詳細',
             'card': 'summary_large_image',
-            'image': ''
+            'image': '',
+            'mode': 'movie',
+            'movie_url': '',
         }
         
     def get(self, request,title):
@@ -55,10 +59,13 @@ class musicDetail(View):
             title=title,
             )
         
+        # ポスター画像設定
         img = ''
         if musics.count() != 0:
-            img = musics.first().poster.url
+            music = musics.first()
+            img = music.poster.url
             self.head_meta['image'] = img
+            self.head_meta['movie_url'] = music.movie_url
         
         # 楽曲詳細取得
         musicDetail = models.MusicDetail.objects.filter(

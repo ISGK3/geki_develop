@@ -38,7 +38,7 @@ class MusicInfo(sysModelBase):
     const = models.FloatField(verbose_name='譜面定数', blank=True, null=True)
     bpm = models.IntegerField(verbose_name='BPM', blank=True, null=True)
     difficulty = models.CharField(verbose_name='難易度', max_length=128)
-    
+    movie_url = models.CharField(verbose_name='動画URL', max_length=128, blank=True,  null=True)
 
 class MusicDetail(sysModelBase):
     """

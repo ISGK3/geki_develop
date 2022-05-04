@@ -8,7 +8,7 @@
         {% bootstrap_javascript %}
         <meta property="twitter:card" content={{ head_meta.card }}>
         <meta property="twitter:title" content={{ head_meta.title }}>
-        <meta name="twitter:image" content={% static head_meta.image %}>
+        <meta name="twitter:image" content={{ head_meta.image }}>
         <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
         <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery.tablesorter/2.31.0/js/jquery.tablesorter.min.js"></script>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery.tablesorter/2.31.0/css/theme.default.min.css">
@@ -38,7 +38,14 @@
             <div class="container">
                 <br>
                 <hr>
-                <img src="{% static 'img/ogimage.jpg' %}" style="display: inline;">
+                <div class="head_image">
+                    {% if head_meta.mode == "movie" and request.user.id %}
+                    <p>譜面動画</p>
+                    <iframe width="860" height="515" src="{{ head_meta.movie_url }}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    {% else %}
+                    <img src="{% static 'img/ogimage.jpg' %}" style="display: inline;" >
+                    {% endif %}
+                </div>
                 <br>
                 <hr>
                 {% block main %}{% endblock %}
