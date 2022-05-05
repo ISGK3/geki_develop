@@ -10,11 +10,12 @@
 td{
     border: 1px solid #aaa;
     border-collapse: collapse;
+    border-width: 2px;
 }
 
 #table_detail tbody{
     border-color: black;
-    border-width: 1px;
+    border-width: 2px;
 }
 #table_detail th, td{
     border: 1px solid #aaa;
@@ -27,4 +28,102 @@ td{
     display: -ms-flex;
     display: -o-flex;
     display: flex;
+}
+
+.forecastCity table {
+    width: 100%;
+    margin: 5px 0;
+    border-spacing: 0;
+    border-collapse: separate;
+    border-top: 1px solid #c5cee8;
+    border-right: 1px solid #c5cee8;
+    table-layout: fixed;
+}
+
+.forecastCity td, .forecastCity th {
+    width: 50%;
+    border-bottom: 1px solid #c5cee8;
+    border-left: 1px solid #c5cee8;
+    vertical-align: top;
+    text-align: center;
+}
+
+.forecastCity .time {
+    background-color: #f2f4fa;
+}
+
+.forecastCity dl {
+    font-size: .75rem;
+    overflow: hidden;
+    margin-top: 5px;
+}
+
+.forecastCity dt {
+    clear: both;
+    float: left;
+    margin-top: 3px;
+}
+
+.forecastCity dd {
+    overflow: hidden;
+    margin-top: 3px;
+}
+
+dd, dl {
+    margin: 0;
+    padding: 0;
+}
+
+.forecastCity .date {
+    margin-bottom: 5px;
+    font-size: .9375rem;
+    font-weight: 700;
+}
+
+.holiday {
+    color: #c1132e;
+}
+
+.forecastCity .pict {
+    display: inline-block;
+    min-width: 123px;
+    margin: 0 4px 3px -6px;
+    font-size: 1rem;
+    font-weight: 700;
+    vertical-align: middle;
+    white-space: nowrap;
+}
+
+.forecastCity .temp {
+    display: inline-block;
+    margin: 0 -8px 3px 0;
+    white-space: nowrap;
+}
+
+.forecastCity .temp li {
+    display: inline;
+    line-height: 30px;
+    font-size: .8125rem;
+}
+
+.forecastCity .temp em {
+    font-size: 1.0625rem;
+    font-weight: 700;
+}
+
+
+.temp .high {
+    color: #fd3102;
+}
+
+.temp .low {
+    color: #0a38e4;
+}
+
+.yjw_title_h2 {
+    padding: 0.3em 0.6em;
+    border-top: solid 1px #bbc7e3;
+    background: #e5eaf7;
+    color: #333;
+    font-weight: 700;
 }

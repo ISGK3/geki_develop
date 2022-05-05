@@ -2,13 +2,18 @@ from re import template
 from django.http import Http404
 from django.shortcuts import render
 from django.views import View
-from . import models
+from . import models, library
 
 # Create your views here.
 
 def top(request):
     template_name = 'top/top.html'
-    return render(request, template_name)
+    # yahoo天気
+    url = 'https://weather.yahoo.co.jp/weather/jp/13/'
+    area_code = '4410'
+    endpoint = '.html'
+    weather_info = library.get_weather(URL=url + area_code + endpoint)
+    return render(request, template_name, context=weather_info)
 
 
 class musicListView(View):
