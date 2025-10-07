@@ -1,8 +1,87 @@
-{% extends "base.html" %}
-{% load django_bootstrap5 %}
+{% extends "base.html" %} {% load django_bootstrap5 %} {% block main %}
+<div class="yjw_title_h2 yjw_clr">
+  <h2 class="yjMt">★東京のお天気★</h2>
+  <p class="yjSt yjw_note_h2">お出かけは計画的に♪</p>
+</div>
+<div class="forecastCity">
+  <table>
+    <tbody>
+      <tr>
+        <td>
+          <div>
+            <p class="date"><span>{{ today.0 }}</span></p>
+            <p class="pict">
+              <img src="{{ img_today }}" border="0" alt="晴時々曇"/>{{ today.1 }}
+            </p>
+            <ul class="temp">
+              <li class="high"><em>{{ today.2 }}</em>℃[+3]</li>
+              <li class="low"><em>{{ today.3 }}</em>℃[+3]</li>
+            </ul>
+            <table>
+              <tbody>
+                <tr class="time">
+                  <th>時間</th>
+                  <td>0-6</td>
+                  <td>6-12</td>
+                  <td>12-18</td>
+                  <td>18-24</td>
+                </tr>
+                <tr class="precip">
+                  <th>降水</th>
+                  <td>{{ today.10 }}</td>
+                  <td>{{ today.11 }}</td>
+                  <td>{{ today.12 }}</td>
+                  <td>{{ today.13 }}</td>
+                </tr>
+              </tbody>
+            </table>
+            <dl>
+              <dt>風：</dt>
+              <dd>{{ today.15 }}</dd>
+              <dt>波：</dt>
+              <dd>{{ today.17 }}</dd>
+            </dl>
+          </div>
+        </td>
 
-{% block main %}
-<a href="" rel="colorbox">
-    <img src="" class="lazy" data-original="">
-</a>
+        <td>
+          <div>
+            <p class="date"><span>{{ tomorrow.0 }}</span></p>
+            <p class="pict">
+              <img src="{{ img_tomorrow }}" border="0" alt="晴時々曇"/>{{ tomorrow.1 }}
+            </p>
+            <ul class="temp">
+              <li class="high"><em>{{ tomorrow.2 }}</em>℃[+3]</li>
+              <li class="low"><em>{{ tomorrow.3 }}</em>℃[+3]</li>
+            </ul>
+            <table>
+              <tbody>
+                <tr class="time">
+                  <th>時間</th>
+                  <td>0-6</td>
+                  <td>6-12</td>
+                  <td>12-18</td>
+                  <td>18-24</td>
+                </tr>
+                <tr class="precip">
+                  <th>降水</th>
+                  <td>{{ tomorrow.10 }}</td>
+                  <td>{{ tomorrow.11 }}</td>
+                  <td>{{ tomorrow.12 }}</td>
+                  <td>{{ tomorrow.13 }}</td>
+                </tr>
+              </tbody>
+            </table>
+            <dl>
+              <dt>風：</dt>
+              <dd>{{ tomorrow.15 }}</dd>
+              <dt>波：</dt>
+              <dd>{{ tomorrow.17 }}</dd>
+            </dl>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
 {% endblock %}
