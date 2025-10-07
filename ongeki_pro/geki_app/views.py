@@ -4,15 +4,16 @@ from django.shortcuts import render
 from django.views import View
 from . import models, library
 
-# Create your views here.
 
+URL_YAHOO_WEATHER = 'https://weather.yahoo.co.jp/weather/jp/13/'
+AREA_CODE_TOKYO = '4410'
+
+# Create your views here.
 def top(request):
     template_name = 'top/top.html'
     # yahoo天気
-    url = 'https://weather.yahoo.co.jp/weather/jp/13/'
-    area_code = '4410'
     endpoint = '.html'
-    weather_info = library.get_weather(URL=url + area_code + endpoint)
+    weather_info = library.get_weather(URL=URL_YAHOO_WEATHER + AREA_CODE_TOKYO + endpoint)
     return render(request, template_name, context=weather_info)
 
 
@@ -35,9 +36,10 @@ class musicListView(View):
     def get(self, request):      
         
         music_list = models.MusicInfo.objects.all()
-        context = {'music_list': music_list,
-                   'head_meta': self.head_meta,
-                   }
+        context = {
+            'music_list': music_list,
+            'head_meta': self.head_meta,
+        }
         
         return render(request, template_name=self.template_name, context=context)
 
@@ -56,13 +58,13 @@ class musicDetail(View):
             'mode': 'movie',
             'movie_url': '',
         }
-        
-    def get(self, request,title):
+
+    def get(self, request, title):
         
         # 楽曲情報取得
         musics =  models.MusicInfo.objects.filter(
             title=title,
-            )
+        )
         
         # ポスター画像設定
         img = ''
@@ -75,11 +77,12 @@ class musicDetail(View):
         # 楽曲詳細取得
         musicDetail = models.MusicDetail.objects.filter(
             title=title,
-            ).first()
+        ).first()
         
-        context = {'musics': musics,
-                   'head_meta': self.head_meta,
-                   'img': img,
-                   'music_detail': musicDetail,
-                   }
+        context = {
+            'musics': musics,
+            'head_meta': self.head_meta,
+            'img': img,
+            'music_detail': musicDetail,
+        }
         return render(request, template_name=self.template_name, context=context)

@@ -127,3 +127,8 @@ dd, dl {
     color: #333;
     font-weight: 700;
 }
+
+.head_image > img {
+    object-fit: contain;
+    width: 100%;
+}
